@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.7.2-alpine3.9
+FROM python:3.7.2-alpine3.9 AS pyvideo
 
 # Set the working directory to /app
 WORKDIR /myflix
