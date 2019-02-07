@@ -1,6 +1,7 @@
 echo Stopping Services
 docker stop pyvideo
 docker rm pyvideo
+rm -rf myflix
 
 docker run -d --name pyvideo python
 sleep 10
