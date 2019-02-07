@@ -3,6 +3,7 @@ docker stop pyvideo
 docker rm pyvideo
 
 docker run -d --name pyvideo python
+sleep 10
 docker exec -it pyvideo bash
 git clone https://github.com/adeli321/myflix.git
 pip install pymongo
