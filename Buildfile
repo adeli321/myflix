@@ -3,10 +3,10 @@ docker stop pyvideo
 docker rm pyvideo
 rm -rf myflix
 
-docker run -d -it --name pyvideo python
-sleep 10
-docker exec -it pyvideo bash
 git clone https://github.com/adeli321/myflix.git
-pip install pymongo
-pip install flask
-python3 video.py
+docker build -t buildme .
+sleep 10
+
+docker exec -it pyvideo bash -c 'pip install flask'
+docker exec -it pyvideo bash -c 'pip install pymongo'
+docker exec -it pyvideo python3 video.py
