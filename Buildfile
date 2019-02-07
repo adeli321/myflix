@@ -4,7 +4,7 @@ docker rm pyvideo
 rm -rf myflix
 
 git clone https://github.com/adeli321/myflix.git
-docker build -t buildme .
+docker build -t pyvideo .
 sleep 10
 
 docker exec -it pyvideo bash -c 'pip install flask'

@@ -9,8 +9,7 @@ COPY . /myflix
 
 # Install any needed packages specified in requirements.txt
 RUN \
- pip install --trusted-host pypi.python.org -r requirements.txt --no-cache-dir && \
- apk --purge del .build-deps
+ pip install --trusted-host pypi.python.org -r requirements.txt --no-cache-dir
 
 # Make port 80 available to the world outside this container
 EXPOSE 8080
@@ -18,5 +17,5 @@ EXPOSE 8080
 # Define environment variable
 # ENV NAME World
 
-# Run app.py when the container launches
+# Run video.py when the container launches
 CMD ["python3", "video.py"]
