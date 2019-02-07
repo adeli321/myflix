@@ -7,7 +7,7 @@ git clone https://github.com/adeli321/myflix.git
 docker build -t pyvideo .
 sleep 10
 
-docker run -it --name pyvideo pyvideo 
+docker run -d -it --name pyvideo pyvideo 
 sleep 10
 docker exec -it pyvideo bash -c 'pip install flask'
 docker exec -it pyvideo bash -c 'pip install pymongo'
