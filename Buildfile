@@ -3,7 +3,7 @@ docker stop pyvideo
 docker rm pyvideo
 rm -rf myflix
 
-docker run -d --name pyvideo python
+docker run -d -it --name pyvideo python
 sleep 10
 docker exec -it pyvideo bash
 git clone https://github.com/adeli321/myflix.git
