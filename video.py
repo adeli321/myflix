@@ -4,11 +4,13 @@ import pymongo
 from pymongo import MongoClient
 import gridfs
 from gridfs import GridFSBucket
-from flask import Flask, render_template, request, url_for, Response
+from flask import Flask, render_template, request, url_for, Response, redirect, session
+import json
 
 app = Flask(__name__)
+app.secret_key = b'_5-y4L"F4Q9z\n\x7ec]/'
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def entry() -> 'html':
     return render_template('homepage.html', title='MyFlix Welcomes You')
 
@@ -22,7 +24,7 @@ def test_me():
     return Response(text, mimetype='text/html')
 
 @app.route('/moartests', methods=['POST'])
-def moar_tests():
+def moar_tests() -> 'html':
     da_title = 'Moar Tests Title Page'
     first    = request.form['first_name']
     last     = request.form['last_name']
@@ -32,33 +34,25 @@ def moar_tests():
 
 @app.route('/playvideo', methods=['POST', 'GET'])
 def play_video():
-    # def grab_title():
-    #     video = request.form['movie_title']
-    #     return video
-    # client    = MongoClient(host='35.242.180.246:27017')
-    # videoz     = request.form['movie_title']
-    # if request.method == 'POST':
-        # video = request.form['movie_title']
-    # client    = MongoClient('mongodb://restheart:R3ste4rt!@35.246.41.186:27017')
-    # client2   = 0
-    # if request.form['movie_title'] != '':
-    # video = request.form.get("movie_title", True)
-    # video     = request.form['movie_title']
-    # video     = 'SampleVideo_1.mp4'
-    # video = request.form.get('movie_title')
-    # if video == None:
-    #     return 'None no variable'
-    # else:
-    client    = MongoClient('mongodb://restheart:R3ste4rt!@35.246.41.186:27017')
-    videos_db = client.get_database('videos')
-    fs        = GridFSBucket(videos_db)
-    grid_out  = fs.open_download_stream_by_name('SampleVideo_1.mp4')
-    contents  = grid_out.read()
-    # return video
-    return Response(contents, mimetype='video/mp4')
-    # return Response(fake_contents, mimetype='video/mp4')
-    # else:
-    #     return 'hello'
+    if request.method == 'POST':
+        session['video'] = request.form['movie_title'] 
+        client    = MongoClient('mongodb://restheart:R3ste4rt!@35.242.180.246:27017')
+        videos_db = client.get_database('videos')
+        fs        = GridFSBucket(videos_db)
+        grid_out  = fs.open_download_stream_by_name(session['video'])
+        contents  = grid_out.read()
+        return Response(contents, mimetype='video/mp4')
+    elif request.method == 'GET':
+        client    = MongoClient('mongodb://restheart:R3ste4rt!@35.242.180.246:27017')
+        videos_db = client.get_database('videos')
+        fs        = GridFSBucket(videos_db)
+        grid_out  = fs.open_download_stream_by_name(session['video'])
+        contents  = grid_out.read()
+        return Response(contents, mimetype='video/mp4')
+    else:
+        return post 
+
+
 
 
 
