@@ -52,7 +52,7 @@ def play_video():
         client    = MongoClient('mongodb://restheart:R3ste4rt!@35.242.180.246:27017')
         videos_db = client.get_database('videos')
         fs        = GridFSBucket(videos_db)
-        grid_out  = fs.open_download_stream_by_name(video)
+        grid_out  = fs.open_download_stream_by_name('SampleVideo_1.mp4')
         contents  = grid_out.read()
         # return video
         return Response(contents, mimetype='video/mp4')
