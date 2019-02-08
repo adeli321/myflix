@@ -39,23 +39,23 @@ def play_video():
     # videoz     = request.form['movie_title']
     # if request.method == 'POST':
         # video = request.form['movie_title']
-    client    = MongoClient('mongodb://restheart:R3ste4rt!@35.246.41.186:27017')
+    # client    = MongoClient('mongodb://restheart:R3ste4rt!@35.246.41.186:27017')
     # client2   = 0
     # if request.form['movie_title'] != '':
     # video = request.form.get("movie_title", True)
     # video     = request.form['movie_title']
     # video     = 'SampleVideo_1.mp4'
-    video = request.form.get('movie_title')
-    if video == None:
-        return 'None no variable'
-    else:
-        client    = MongoClient('mongodb://restheart:R3ste4rt!@35.246.41.186:27017')
-        videos_db = client.get_database('videos')
-        fs        = GridFSBucket(videos_db)
-        grid_out  = fs.open_download_stream_by_name('SampleVideo_1.mp4')
-        contents  = grid_out.read()
-        # return video
-        return Response(contents, mimetype='video/mp4')
+    # video = request.form.get('movie_title')
+    # if video == None:
+    #     return 'None no variable'
+    # else:
+    client    = MongoClient('mongodb://restheart:R3ste4rt!@35.246.41.186:27017')
+    videos_db = client.get_database('videos')
+    fs        = GridFSBucket(videos_db)
+    grid_out  = fs.open_download_stream_by_name('SampleVideo_1.mp4')
+    contents  = grid_out.read()
+    # return video
+    return Response(contents, mimetype='video/mp4')
     # return Response(fake_contents, mimetype='video/mp4')
     # else:
     #     return 'hello'
