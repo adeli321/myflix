@@ -5,12 +5,12 @@ from pymongo import MongoClient
 import gridfs
 from gridfs import GridFSBucket
 from flask import Flask, render_template, request, url_for, Response, redirect, session
-import json
+
 
 app = Flask(__name__)
 app.secret_key = b'_5-y4L"F4Q9z\n\x7ec]/'
 
-mongo_client = MongoClient('mongodb://restheart:R3ste4rt!@35.242.180.246:27017')
+mongo_client = MongoClient('mongodb://restheart:R3ste4rt!@35.246.41.186:27017')
 
 @app.route('/', methods=['GET'])
 def entry() -> 'html':
