@@ -6,6 +6,7 @@ import gridfs
 from gridfs import GridFSBucket
 from flask import Flask, render_template, request, url_for, Response, redirect, session
 
+<<<<<<< HEAD
 
 
 
@@ -19,6 +20,8 @@ from flask import Flask, render_template, request, url_for, Response, redirect, 
 
 
 
+=======
+>>>>>>> 5cea6a0486e90217e0f98a596a7669bd41c80927
 app = Flask(__name__)
 app.secret_key = b'_5-y4L"F4Q9z\n\x7ec]/'
 
