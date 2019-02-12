@@ -9,20 +9,6 @@ from flask import Flask, render_template, request, url_for, Response, redirect, 
 app = Flask(__name__)
 app.secret_key = b'_5-y4L"F4Q9z\n\x7ec]/'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 mongo_client = MongoClient('mongodb://restheart:R3ste4rt!@35.234.143.12:27017')
 
 @app.route('/', methods=['GET'])
