@@ -1,11 +1,11 @@
 echo Stopping Services
-docker stop pyvideo
-docker rm pyvideo
+sudo docker stop pyvideo
+sudo docker rm pyvideo
 rm -rf myflix
 
-docker build -t pyvideo .
+sudo docker build -t pyvideo .
 sleep 5
 
-docker run -d -it -p 8080:8080 --name pyvideo pyvideo 
+sudo docker run -d -it -p 8080:8080 --name pyvideo pyvideo 
 sleep 5
-docker exec -it pyvideo python3 video.py
+sudo docker exec -it pyvideo python3 video.py
